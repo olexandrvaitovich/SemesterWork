@@ -2,10 +2,10 @@
 Course work of two students. An app is created to mostly secure people's phones and children.
 
 Folder modules - all the python files that are being used:
-main.py - the app itself(interface)
-battery.py - taking info about battery 
-sendmail.py - sending mail
-location.py - parsing the location(not yet tested)
+main.py - the app itself(interface)  
+battery.py - taking info about battery  
+sendmail.py - sending mail  
+location.py - parsing the location(not yet tested)  
 
 Folder weekSummaries - all summaries of our work divided into three files
 
