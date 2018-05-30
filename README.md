@@ -6,6 +6,8 @@ main.py - the app itself(interface)
 battery.py - taking info about battery  
 sendmail.py - sending mail  
 location.py - parsing the location(not yet tested)  
+reafile.py - reading from file the way it is needed in our project  
+writefile.py - writing the way it is needed in our project
 
 Folder weekSummaries - all summaries of our work divided into three files
 
