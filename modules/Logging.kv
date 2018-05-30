@@ -1,0 +1,195 @@
+<Logging_page>:
+	remember: checkbox
+	login: mail
+	FloatLayout:
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				pos: self.pos
+				size: self.size
+
+		Image:
+			source:"lock.png"
+			halign: "center"
+			pos_hint:{"y":0.11}	
+
+		CheckBox:
+			canvas.before:
+				Color:
+					rgba: (51/255,182/255,234/255,1)
+				Rectangle:
+					pos:self.center_x-8, self.center_y-8
+					size:[16,16]
+				Color:
+					rgb: 0,0,0
+				Rectangle:
+					pos:self.center_x-7, self.center_y-7
+					size:[14,14]
+			id: checkbox
+			active: True
+			size_hint: .2,.2
+			pos_hint:{"x":.3,"y":-.06}
+			valign:"middle"
+
+
+		
+		Label:
+			id: labe
+			color: (0,.3,1,1)
+			size: self.size
+			halign: "center"
+			text: '[font=fontt]{}[/font]'.format(root.mainlabeltext)
+			pos_hint: {"y": 0.35}
+			text_size: (self.width,None)
+			font_size: 40
+			markup: True
+
+		TextInput:
+			id: parole
+			multyline: False
+			password: True
+			halign: "center"
+			size_hint: .4,.08
+			hint_text: "Password"
+			pos_hint: {"x":.3,"y":.2}
+
+		TextInput:
+			id: mail
+			multyline: False
+			halign: "center"
+			size_hint: .4,.08
+			hint_text: "Login"
+			pos_hint: {"x":.3,"y":.3}
+
+		Button:
+			text: "Log In"
+			on_press: root.checklogpas()
+			pos_hint: {"x":.3,"y":.08}
+			size_hint: .2,.1	
+
+		Button:
+			text: 'Register'
+			on_press: root.manager.current ="reg"
+			size_hint: .2,.1
+			pos_hint: {"x":.5,"y":.08}
+
+		Label:
+			text: "Remember me"
+			pos_hint: {"x":.02,"y":-.46}
+			halign: "center"
+			color: (51/255,182/255,234/255,1)
+			font_size: 20
+
+<SenderEmail>:
+	FloatLayout:
+		canvas.before:
+			Color:
+				rgba:(51/255,182/255,234/255,1)
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		Label:
+			text: "Type the mail that you want to get info to"
+			halign: "center"
+			pos_hint: {"y":.2}
+			font_size: 30
+
+		TextInput:
+			id: sendermail
+			multyline: False
+			halign: "center"
+			size_hint: .4,.08
+			hint_text: "Mail"
+			pos_hint: {"x":.3,"y":.4}
+
+		Button:
+			text: "Go for it!"
+			on_release: root.getmail()
+			size_hint: .2,.2
+			pos_hint: {"x":.4,"y":.18}
+
+
+<Submitting_page>:
+	FloatLayout:
+		canvas.before:
+			Color:
+				rgba:(51/255,182/255,234/255,1)
+			Rectangle:
+				pos: self.pos
+				size: self.size
+
+		Image:
+			source: "closedlock.png"
+			halign: "center"
+
+		Label:
+			text: "[font=fontt]Your phone is safe right now![/font]"
+			pos_hint: {"y": 0.3}
+			text_size: (self.width,None)
+			font_size: 50
+			markup: True
+			color: (1,1,1,1)
+			size: self.size
+			halign: "center"
+
+		Label:
+			text: "If you want to turn on the constant location sharing function please click the button below"
+			markup: True
+			color:(1,1,1,1)
+			halign:"center"
+			size_hint: 1,0.5
+			pos_hint: {"y":0}
+			text_size: (self.width,None)
+			font_size: 17
+
+		Button:
+			text: "Share"
+			on_press: root.constlocation()
+			size_hint: .1,.1
+			halign:"center"
+			pos_hint: {"x":.45,"y":.05}
+
+
+<Registration_page>:
+	FloatLayout:
+		canvas.before:
+			Color:
+				rgba:(51/255,182/255,234/255,1)
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		Label:
+			text: "[font=fontt]Type your Mail and Password and you will get register in system[/font]"
+			markup: True
+			font_size: 40
+			color:(1,1,1,1)
+			halign:"center"
+			size_hint: 1,0.5
+			pos_hint: {"y":.5}
+			text_size: (self.width,None)
+
+		TextInput:
+			id: mail
+			multyline: False
+			halign: "center"
+			size_hint: .4,.08
+			hint_text: "Mail"
+			pos_hint: {"x":.3,"y":.2}
+
+		TextInput:
+			id: parole
+			password: True
+			multyline: False
+			halign: "center"
+			size_hint: .4,.08
+			hint_text: "Password"
+			pos_hint: {"x":.3,"y":.1}
+
+		Button:
+			text: "Do It!"
+			on_press:root.returnmail(), root.returnpassword(),root.idcreation(),root.writetofile(),root.goforward()
+			on_press: root.manager.current = "log"
+			size_hint:.4,.3
+			pos_hint: {"x":.3,"y":.35}
+
