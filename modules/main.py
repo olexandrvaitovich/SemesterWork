@@ -17,6 +17,7 @@ from kivy.properties import ObjectProperty
 
 from filewrite import writing
 from fileread import reading
+from location import GpsTest
 
 KIVY_FONTS = [
     {
@@ -40,7 +41,7 @@ class Logging_page(Screen):
         try:
             if database[str(self.idcheck(log,pas))] == (pas,log) \
                and log !="" and pas != "":
-                self.rememberloginandpass()                    
+                #self.rememberloginandpass()                    
                 app = App.get_running_app()
                 app.root.current = "sub"
         except KeyError:
@@ -48,14 +49,13 @@ class Logging_page(Screen):
     def createanerrrorwidget(self):
         self.ids.labe.text = "Wrong login or password"
     def rememberloginandpass(self):
-        pass     
+        raise NotImplementedError("WE WERE TO LAZY TO FINISH THAT")
                   
-
-        
 
 class Submitting_page(Screen):
     def locationsend(self):
-        raise NotImplementedError
+        GpsTest().run()
+            
     def constlocation(self):
         raise NotImplementedError
 
