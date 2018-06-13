@@ -4,6 +4,8 @@ from kivy.app import App
 from kivy.properties import StringProperty
 from kivy.clock import Clock, mainthread
 
+from sys import exit
+
 kv = '''
 BoxLayout:
     orientation: 'vertical'
@@ -35,8 +37,9 @@ class GpsTest(App):
         except NotImplementedError:
             import traceback
             traceback.print_exc()
+            print('GPS is not implemented for your platform')
             self.gps_status = 'GPS is not implemented for your platform'
-
+            exit()
         return Builder.load_string(kv)
 
     def start(self, minTime, minDistance):
